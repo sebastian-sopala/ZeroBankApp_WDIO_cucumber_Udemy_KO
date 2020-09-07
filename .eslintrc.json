@@ -1,0 +1,21 @@
+{
+    "plugins": [
+        "wdio"
+    ],
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "airbnb-base",
+        "eslint:recommended",
+        "plugin:wdio/recommended"
+        ],
+    "parserOptions": {
+        "ecmaVersion": 10,
+        "sourceType": "module"
+    },
+    "rules": {
+        "class-methods-use-this": "off"
+    }
+}

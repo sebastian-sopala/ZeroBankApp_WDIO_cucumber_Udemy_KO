@@ -1,15 +1,15 @@
-@find_transaction
+@find_transaction @wip
+# application issue - not working as expected
 Feature: Find transaction
 
-Background: User is on find transaction page
+Scenario Outline: User searches for transaction
     Given User is secessfully loged in to Zero Bank application
     And Navigates to Find Transaction page
+    When User fills out the Find Transaction form with "<inputText>"
+    Then The "<result>" is displayed
 
 
-Scenario: User can find transaction if it exists
-    When User fills out the 'Find Transaction' form with invalid data
-    Then No results alert is displayed
-
-Scenario: User gets No Result if transaction doesn't exist
-    When User fills out the 'Find Transaction' form with valid data
-    Then The results are displayed
+Examples:
+    | inputText        | result      |
+    | Test Transaction | allert      |
+    | OFFICE SUPPLY    | transaction |

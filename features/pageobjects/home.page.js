@@ -11,8 +11,16 @@ class HomePage {
     return browser.$('.icon-user');
   }
 
+  get settingsDropdown() {
+    return browser.$('.icon-cog');
+  }
+
   get logoutButton() {
     return browser.$('#logout_link');
+  }
+
+  get helpLink() {
+    return browser.$('#help_link');
   }
 
   get payBillsTab() {

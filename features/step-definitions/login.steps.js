@@ -25,12 +25,12 @@ When(/^I can log out$/, () => {
 
 Then(/^I should not be able to log in$/, () => {
   loginPage.alertMessage.waitForDisplayed();
-  assert.equal(loginPage.alertMessage.getText(), 'Login and/or password are wrong.', 'WRONG ALERT MESSAGE');
+  assert.strictEqual(loginPage.alertMessage.getText(), 'Login and/or password are wrong.', 'WRONG ALERT MESSAGE');
 });
 
 Then(/^I should be able to log in$/, () => {
   homePage.tabsMenu.waitForExist();
-  assert.equal(homePage.usernameDropdown.isExisting(), true);
+  assert.strictEqual(homePage.usernameDropdown.isExisting(), true);
 });
 
 Then(/^I'm logged out$/, () => {

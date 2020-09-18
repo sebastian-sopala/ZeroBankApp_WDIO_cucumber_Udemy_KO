@@ -12,22 +12,18 @@ Given(/^Navigates to Find Transaction page$/, () => {
   findTransactionPage.description.waitForDisplayed();
 });
 
-When(/^User fills out the 'Find Transaction' form with invalid data$/, () => {
-  findTransactionPage.description.setValue('test transfer');
+When(/^User fills out the Find Transaction form with "([^"]*)?"$/, (inputText) => {
+  console.log(inputText);
+  findTransactionPage.description.setValue(inputText);
   findTransactionPage.findButton.click();
 });
 
-When(/^User fills out the 'Find Transaction' form with valid data$/, () => {
-  findTransactionPage.description.setValue('OFFICE SUPPLY');
-  findTransactionPage.findButton.click();
-});
-
-Then(/^No results alert is displayed$/, () => {
-  findTransactionPage.noResultsAlert.waitForDisplayed();
-  assert.equal(findTransactionPage.noResultsAlert.getText(), 'No results.', 'WRONG ALERT');
-});
-
-Then(/^The results are displayed$/, () => {
-  findTransactionPage.findTransactionResults.waitForDisplayed();
-  assert.equal(findTransactionPage.findTransactionRecord.getText(), 'OFFICE SUPPLY', 'WRONG ALERT');
+Then(/^The "([^"]*)?" is displayed$/, (result) => {
+  if (result === 'allert') {
+    findTransactionPage.noResultsAlert.waitForDisplayed();
+    assert.strictEqual(findTransactionPage.noResultsAlert.getText(), 'No results.', 'WRONG ALERT');
+  } else {
+    findTransactionPage.findTransactionResults.waitForDisplayed();
+    assert.strictEqual(findTransactionPage.findTransactionRecord.getText(), 'OFFICE SUPPLY', 'WRONG ALERT');
+  }
 });
